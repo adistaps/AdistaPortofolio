@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design System - Modern Portfolio Theme */
+@layer base {
+  :root {
+    /* Background Colors */
+    --background: 220 13% 9%;
+    --surface: 220 13% 11%;
+    --surface-elevated: 220 13% 13%;
+    --foreground: 220 9% 95%;
+    --muted: 220 9% 75%;
+    --muted-dark: 220 9% 45%;
+
+    /* Brand Colors */
+    --primary: 259 94% 65%;
+    --primary-foreground: 220 9% 95%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 220 9% 95%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(259, 94%, 65%) 0%, hsl(217, 91%, 60%) 100%);
+    --gradient-surface: linear-gradient(135deg, hsl(220, 13%, 11%) 0%, hsl(220, 13%, 13%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(259, 94%, 65%) 0%, hsl(217, 91%, 60%) 50%, hsl(259, 94%, 65%) 100%);
+
+    /* Semantic Colors */
+    --card: 220 13% 11%;
+    --card-foreground: 220 9% 95%;
+    --border: 220 13% 20%;
+    --input: 220 13% 15%;
+    --ring: 259 94% 65%;
+
+    /* Spacing & Sizing */
+    --radius: 0.75rem;
+    --container-padding: 1.5rem;
+    --section-spacing: 6rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(259, 94%, 65%, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(217, 91%, 60%, 0.1) 0%, transparent 50%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Components */
+  .hero-title {
+    @apply text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent leading-tight;
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease-in-out infinite;
+  }
+
+  .hero-subtitle {
+    @apply text-xl md:text-2xl text-muted font-light leading-relaxed;
+  }
+
+  /* Card Components */
+  .project-card {
+    @apply bg-surface/50 backdrop-blur-sm border border-border/50 rounded-xl p-6 
+           hover:bg-surface-elevated/70 hover:border-primary/30 
+           transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20;
+  }
+
+  .skill-card {
+    @apply bg-gradient-to-br from-surface to-surface-elevated border border-border/50 
+           rounded-lg p-4 text-center hover:border-primary/50 transition-all duration-300
+           hover:scale-105 hover:shadow-lg hover:shadow-primary/20;
+  }
+
+  /* Button Variants */
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 
+           rounded-full font-semibold hover:shadow-lg hover:shadow-primary/30 
+           hover:scale-105 transition-all duration-300 border-0;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary/50 text-primary px-8 py-4 rounded-full font-semibold 
+           hover:bg-primary hover:text-primary-foreground hover:border-primary
+           hover:shadow-lg hover:shadow-primary/30 transition-all duration-300;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply text-muted hover:text-foreground transition-colors duration-300 relative
+           after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 
+           after:bg-gradient-to-r after:from-primary after:to-accent 
+           after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  /* Section Headers */
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold text-center mb-4 
+           bg-gradient-to-r from-foreground to-muted bg-clip-text text-transparent;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-muted text-center mb-12 max-w-2xl mx-auto;
+  }
+
+  /* Contact Form */
+  .form-input {
+    @apply bg-input border border-border/50 rounded-lg px-4 py-3 text-foreground 
+           placeholder:text-muted-dark focus:border-primary/50 focus:ring-2 
+           focus:ring-primary/20 transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  /* Container Utilities */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 lg:py-28;
+  }
+
+  /* Animation Utilities */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  /* Backdrop Effects */
+  .glass-effect {
+    @apply bg-surface/30 backdrop-blur-md border border-border/30;
+  }
+
+  /* Futuristic Button Utilities */
+  .bg-size-200 {
+    background-size: 200% 200%;
+  }
+
+  .bg-pos-0 {
+    background-position: 0% 50%;
+  }
+
+  .bg-pos-100 {
+    background-position: 100% 50%;
+  }
+}
+
+/* Custom Animations */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px hsl(259, 94%, 65%, 0.4); }
+  to { box-shadow: 0 0 40px hsl(259, 94%, 65%, 0.6); }
+}
+
+/* Scroll animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
