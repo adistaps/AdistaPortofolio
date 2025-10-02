@@ -1,4 +1,3 @@
-
 import { ExternalLink } from 'lucide-react';
 
 const Portfolio = () => {
@@ -23,6 +22,13 @@ const Portfolio = () => {
       image: "/lovable-uploads/DINDASHBOOK.png",
       technologies: ["React", "Chart.js", "Node.js", "MySQL"],
       liveUrl: "https://alteregofinance.netlify.app"
+    },
+    {
+      title: "Saral Freight Management",
+      description: "Sistem manajemen freight dan logistik dengan fitur tracking pengiriman, manajemen inventory, dan reporting yang komprehensif.",
+      image: "/lovable-uploads/FREIGHT.png",
+      technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+      liveUrl: "https://saralfreightmanagement.netlify.app"
     }
   ];
 
@@ -34,7 +40,7 @@ const Portfolio = () => {
           <p className="section-subtitle">
             Beberapa proyek yang telah saya kerjakan dengan teknologi modern
           </p>
-
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <div 
@@ -61,10 +67,10 @@ const Portfolio = () => {
                     </div>
                   </div>
                 </div>
-
+                
                 <h3 className="text-xl font-semibold text-foreground mb-3">{project.title}</h3>
                 <p className="text-muted mb-4 leading-relaxed">{project.description}</p>
-
+                
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, techIndex) => (
                     <span 
